@@ -8,8 +8,10 @@ class CharacterList extends Component {
     const characters = this.props.characters;
 
     characters.forEach(character => {
-      const characterItem = new CharacterItem({ character });
-      dom.appendChild(characterItem.render());
+      if(character.photoUrl) {
+        const characterItem = new CharacterItem({ character });
+        dom.appendChild(characterItem.render());
+      }
     });
 
     return dom;
