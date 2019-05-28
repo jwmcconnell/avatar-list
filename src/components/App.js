@@ -1,6 +1,7 @@
 import Component from './Component.js';
 import Header from './Header.js';
 import CharacterList from './CharacterList.js';
+import Loading from './Loading.js';
 
 import api from '../services/api.js';
 
@@ -12,14 +13,20 @@ class App extends Component {
 
     const characterList = new CharacterList({ characters: [] });
 
+    const loading = new Loading({ loading: true });
+
     api.getCharacters()
       .then(characters => {
         characterList.update({ characters });
+      })
+      .finally(() => {
+        loading.update({ loading: false });
       });
 
     const main = dom.querySelector('main');
 
     dom.prepend(header.render());
+    main.appendChild(loading.render());
     main.appendChild(characterList.render());
 
     return dom;
