@@ -1,22 +1,23 @@
 import Component from './Component.js';
+import CharacterItem from './CharacterItem.js';
 
 class CharacterList extends Component {
+  render() {
+    const dom = this.renderDOM();
+
+    const characters = this.props.characters;
+
+    characters.forEach(character => {
+      const characterItem = new CharacterItem({ character });
+      dom.appendChild(characterItem.render());
+    });
+
+    return dom;
+  }
+
   renderTemplate() {
     return /*html*/ `
-      <ul>
-        <li>
-          <h2>46th Earth King</h2>
-          <img src="https://vignette.wikia.nocookie.net/avatar/images/5/51/46th_Earth_King.png/revision/latest?cb=20130627160441" alt="46th Earth King">
-        </li>
-        <li>
-          <h2>Aang</h2>
-          <img src="https://vignette.wikia.nocookie.net/avatar/images/a/ae/Aang_at_Jasmine_Dragon.png/revision/latest?cb=20130612174003" alt="Aang">
-        </li>
-        <li>
-          <h2>Aang (games)</h2>
-          <img src="https://vignette.wikia.nocookie.net/avatar/images/2/21/Into_The_Inferno_Aang.png/revision/latest?cb=20131009060746" alt="Aang (games)">
-        </li>
-      </ul>
+      <ul></ul>
     `;
   }
 }
