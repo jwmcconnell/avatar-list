@@ -1,0 +1,12 @@
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul li {
+  margin: 0 5px 5px 0;
+  border: 1px solid black;
+  background: black;
+  color: white;
+}
