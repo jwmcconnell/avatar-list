@@ -23,7 +23,13 @@ class App extends Component {
 
     function loadCharacters() {
       loading.update({ loading: true });
-      api.getCharacters()
+
+      const params = window.location.hash.slice(1);
+      const searchParams = new URLSearchParams(params);
+      const character = searchParams.get('character');
+      const type = searchParams.get('type');
+
+      api.getCharacters(type, character)
         .then(characters => {
           characterList.update({ characters });
         })
