@@ -2,6 +2,7 @@ import Component from './Component.js';
 import Header from './Header.js';
 import CharacterList from './CharacterList.js';
 import Loading from './Loading.js';
+import ResetFilter from './ResetFilter.js';
 
 import api from '../services/api.js';
 
@@ -15,10 +16,13 @@ class App extends Component {
 
     const loading = new Loading({ loading: false });
 
+    const resetFilter = new ResetFilter();
+
     const main = dom.querySelector('main');
 
     dom.prepend(header.render());
     main.appendChild(loading.render());
+    main.appendChild(resetFilter.render());
     main.appendChild(characterList.render());
 
     function loadCharacters() {
