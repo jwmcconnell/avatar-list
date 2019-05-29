@@ -8,6 +8,7 @@ class FilterDisplay extends Component {
 
     const type = this.props.type;
     const character = this.props.character;
+    const nation = this.props.nation;
 
     if(!type) {
       display.textContent = 'All Characters';
@@ -15,6 +16,8 @@ class FilterDisplay extends Component {
       display.textContent = `Enemies of ${character}`;
     } else if(type === 'allies') {
       display.textContent = `Allies of ${character}`;
+    } else if(type === 'nation') {
+      display.textContent = nation;
     }
 
     return dom;

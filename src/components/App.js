@@ -47,7 +47,8 @@ class App extends Component {
 
       filterDisplay.update({
         type: type,
-        character: character
+        character: character,
+        nation: nation
       });
 
       api.getCharacters(type, character, nation)

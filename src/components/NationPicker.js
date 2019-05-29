@@ -9,7 +9,7 @@ class NationPicker extends Component {
       nation.addEventListener('click', () => {
         const searchParams = new URLSearchParams();
         searchParams.set('type', 'nation');
-        searchParams.set('nation', nation.className);
+        searchParams.set('nation', nation.value);
         window.location.hash = searchParams.toString();
       });
     });
@@ -20,10 +20,10 @@ class NationPicker extends Component {
   renderTemplate() {
     return /*html*/ `
     <section class="nation-picker">
-      <button class="air"><img src="../../assets/air-nomads-emblem.png"></button>
-      <button class="water"><img src="../../assets/water-tribe-emblem.png"></button>
-      <button class="earth"><img src="../../assets/earth-kingdom-emblem.png"></button>
-      <button class="fire"><img src="../../assets/fire-nation-emblem.png"></button>
+      <button value="Air Nomads"><img src="../../assets/air-nomads-emblem.png"></button>
+      <button value="Water Tribe"><img src="../../assets/water-tribe-emblem.png"></button>
+      <button value="Earth Kingdom"><img src="../../assets/earth-kingdom-emblem.png"></button>
+      <button value="Fire Nation"><img src="../../assets/fire-nation-emblem.png"></button>
     </section>
     `;
   }
