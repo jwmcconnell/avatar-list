@@ -4,6 +4,7 @@ import CharacterList from './CharacterList.js';
 import Loading from './Loading.js';
 import ResetFilter from './ResetFilter.js';
 import FilterDisplay from './FilterDisplay.js';
+import NationPicker from './NationPicker.js';
 
 import api from '../services/api.js';
 
@@ -24,9 +25,12 @@ class App extends Component {
       character: ''
     });
 
+    const nationPicker = new NationPicker();
+
     const main = dom.querySelector('main');
 
     dom.prepend(header.render());
+    main.appendChild(nationPicker.render());
     main.appendChild(loading.render());
     main.appendChild(resetFilter.render());
     main.appendChild(filterDisplay.render());
