@@ -3,6 +3,7 @@ import Header from './Header.js';
 import CharacterList from './CharacterList.js';
 import Loading from './Loading.js';
 import ResetFilter from './ResetFilter.js';
+import FilterDisplay from './FilterDisplay.js';
 
 import api from '../services/api.js';
 
@@ -18,11 +19,17 @@ class App extends Component {
 
     const resetFilter = new ResetFilter();
 
+    const filterDisplay = new FilterDisplay({
+      type: '',
+      character: ''
+    });
+
     const main = dom.querySelector('main');
 
     dom.prepend(header.render());
     main.appendChild(loading.render());
     main.appendChild(resetFilter.render());
+    main.appendChild(filterDisplay.render());
     main.appendChild(characterList.render());
 
     function loadCharacters() {
@@ -32,6 +39,11 @@ class App extends Component {
       const searchParams = new URLSearchParams(params);
       const character = searchParams.get('character');
       const type = searchParams.get('type');
+
+      filterDisplay.update({
+        type: type,
+        character: character
+      });
 
       api.getCharacters(type, character)
         .then(characters => {
