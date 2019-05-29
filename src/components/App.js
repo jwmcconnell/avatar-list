@@ -43,13 +43,14 @@ class App extends Component {
       const searchParams = new URLSearchParams(params);
       const character = searchParams.get('character');
       const type = searchParams.get('type');
+      const nation = searchParams.get('nation');
 
       filterDisplay.update({
         type: type,
         character: character
       });
 
-      api.getCharacters(type, character)
+      api.getCharacters(type, character, nation)
         .then(characters => {
           characterList.update({ characters });
         })

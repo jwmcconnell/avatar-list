@@ -1,12 +1,17 @@
 const URL = 'https://last-airbender-api.herokuapp.com/api/v1/characters';
 
 const api = {
-  getCharacters(type, character) {
+  getCharacters(type, character, nation) {
     let url = URL;
 
     if(type && character) {
       const searchParams = new URLSearchParams();
       searchParams.set(type, character);
+      const query = searchParams.toString();
+      url += `?${query}`;
+    } else if(type === 'nation' && nation) {
+      const searchParams = new URLSearchParams();
+      searchParams.set('nation', nation);
       const query = searchParams.toString();
       url += `?${query}`;
     }
